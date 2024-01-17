@@ -62,5 +62,12 @@ body {
     min-height: 350px;
   }
   
-
+  ul {
+    list-style: none;
+  }
+  
+  li {
+    margin-bottom: 10px; 
+  }
+  
   

@@ -11,6 +11,7 @@ contract Auction {
     uint public highestBid;
 
     mapping(address => uint) pendingReturns;
+    mapping(address => uint[]) public userAuctionHistory;
 
     bool ended; 
     event HighestBidIncreased(address bidder, uint amount);
@@ -42,6 +43,9 @@ contract Auction {
         highestBidder = msg.sender;
         highestBid = msg.value;
         emit HighestBidIncreased(msg.sender, msg.value);
+
+        // Dodavanje licitacije u istoriju korisnika
+        userAuctionHistory[msg.sender].push(highestBid);
     }
 
     function withdraw() external returns (bool) {
